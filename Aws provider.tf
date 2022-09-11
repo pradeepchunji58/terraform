@@ -5,3 +5,7 @@ provider "aws" {
 }
 
  # s3_force_path_style         = true   
+
+ pradeepchunji58/terraform/aws EC2.tf
+
+ pradeepchunji58/terraform/Aws provider.tf
