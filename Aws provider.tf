@@ -1,7 +1,7 @@
 provider "aws" {
   access_key                  = "mock_access_key"
-  region                      = "us-east-1"
-  secret_key                  = "mock_secret_key"
+  region                      = "AKIAXY44PLG5CN5XOCMA"
+  secret_key                  = "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"
 }
 
- # s3_force_path_style         = true
+ # s3_force_path_style         = true   
