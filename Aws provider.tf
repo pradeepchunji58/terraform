@@ -3,9 +3,3 @@ provider "aws" {
   region                      = "AKIAXY44PLG5CN5XOCMA"
   secret_key                  = "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"
 }
-
- # s3_force_path_style         = true   
-
- pradeepchunji58/terraform/aws EC2.tf
-
- pradeepchunji58/terraform/Aws provider.tf
