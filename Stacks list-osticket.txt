@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  osticket_db:
+    image: mariadb:11.3-jammy
+    container_name: OsTicket_DB
+    security_opt:
+      - no-new-privileges:true
+      - seccomp:unconfined
+      - apparmor:unconfined
+    environment:
+      - MYSQL_ROOT_PASSWORD=Admin
+      - MYSQL_USER=myadmin
+      - MYSQL_PASSWORD=Admin@123
+      - MYSQL_DATABASE=my_database_name
+    volumes:
+      - /volume1/docker/osticket:/var/lib/mysql:rw
+    restart: on-failure:5
+ 
+  osticket:
+    image: devinsolutions/osticket:latest
+    container_name: OsTicket
+    ports:
+      - 80:80
+    depends_on:
+      - osticket_db
+    environment:
+       MYSQL_USER: myadmin
+       MYSQL_PASSWORD: Admin@123
+       MYSQL_DATABASE: my_database_name
+       MYSQL_HOST: osticket_db
+       INSTALL_SECRET: NAdihosting13
+       INSTALL_URL: https://osticket.nadiairtechnics.com
+       INSTALL_NAME: Nadi Helpdesk
+       ADMIN_USERNAME: nadi
+       ADMIN_PASSWORD: Admin@123
+       ADMIN_FIRSTNAME: Nadi
+       ADMIN_LASTNAME: India
+       ADMIN_EMAIL: edp@nadiindia.com
+       CRON_INTERVAL: 1
+       SMTP_USER: itsupport@nadiairtechnics.com
+       SMTP_PASSWORD: Welcome@nadi
+       SMTP_HOST: smtp.office365.com
+       SMTP_PORT: 587
+       SMTP_FROM: itsupport@nadiairtechnics.com
+       SMTP_TLS: 1
+    restart: on-failure:5
